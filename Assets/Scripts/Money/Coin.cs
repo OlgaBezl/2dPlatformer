@@ -1,10 +1,3 @@
-using UnityEngine;
-
-[RequireComponent(typeof(Collider2D))]
-public class Coin : MonoBehaviour
+public class Coin : PickUpItem
 {
-    public void Destroy()
-    {
-        Destroy(gameObject);
-    }
 }

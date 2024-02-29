@@ -2,10 +2,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-public class Enemy : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private List<Waypoint> _waypoints;
     [SerializeField] private Mover _mover;
+    [SerializeField] private Watcher _watcher;
 
     private Vector2 _direction;
 
@@ -16,7 +17,14 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _mover.MoveTo(_direction);
+        if (_watcher.IsWatchingTarget)
+        {
+            _mover.MoveTo(_watcher.TargetPosition.normalized);
+        }
+        else
+        {
+            _mover.MoveTo(_direction);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

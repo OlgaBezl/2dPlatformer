@@ -5,8 +5,12 @@ public class Mover : MonoBehaviour
     [SerializeField] private Transform _rootTransform;
     [SerializeField] private float _speed = 5;
 
+    public Vector2 Direction { get; private set; }
+    
     public void MoveTo(Vector2 direction)
     {
+        Direction = direction;
+
         _rootTransform.Translate(_speed * Time.deltaTime * direction, Space.World);
 
         if (direction.x < 0 && _rootTransform.localScale.x > 0 ||
