@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private Movement _movement;
+    [SerializeField] private Mover _mover;
     [SerializeField] private Jump _jump;
-
-    public bool IsJump { get; private set; }
-    public bool IsWalk => _direction != Vector2.zero;
 
     private MovementInput _input;
     private Vector2 _direction;
     private bool _isIntentToJump;
+
+    public bool IsJump { get; private set; }
+    public bool IsWalk => _direction != Vector2.zero;
 
     private void Start()
     {
@@ -19,18 +19,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        _direction = new Vector2(_input.HorizontalMove(), _input.VerticalMove());
-        _isIntentToJump = _input.Jump();
-
-        if (_isIntentToJump)
-        {
-            _jump.UpdateGroundCollision();
-        }
+        _direction = new Vector2(_input.GetHorizontalPosition(), _input.GetVerticalPosition());
+        _isIntentToJump = _input.GetIntentJump();
     }
 
     private void FixedUpdate()
     {
-        _movement.MoveTo(_direction);
+        _mover.MoveTo(_direction);
 
         IsJump = _isIntentToJump && _jump.TryJump();
    }

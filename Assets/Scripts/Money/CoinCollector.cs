@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class CoinCollector : MonoBehaviour
 {
     [SerializeField] private Wallet _wallet;
 

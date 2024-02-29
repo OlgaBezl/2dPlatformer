@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5072756593709421750}
   - component: {fileID: 3104171865699503551}
   m_Layer: 0
-  m_Name: Movement
+  m_Name: Mover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,7 +81,7 @@ Transform:
   m_Children:
   - {fileID: 5072756593709421750}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2434384780259194888
 Animator:
@@ -171,7 +171,7 @@ MonoBehaviour:
   _waypoints:
   - {fileID: 0}
   - {fileID: 0}
-  _movement: {fileID: 3104171865699503551}
+  _mover: {fileID: 3104171865699503551}
 --- !u!58 &6939456795607766992
 CircleCollider2D:
   m_ObjectHideFlags: 0

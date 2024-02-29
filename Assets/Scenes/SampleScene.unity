@@ -304,8 +304,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 1723415901}
-  _jumpHeight: 4
+  _jumpHeight: 5
   _zeroDistanceToGround: 2.4
+  _groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1001 &375744929
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1338,11 +1341,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1723415896}
   - component: {fileID: 1723415897}
-  - component: {fileID: 1723415898}
   - component: {fileID: 1723415902}
   - component: {fileID: 1723415901}
   - component: {fileID: 1723415900}
   - component: {fileID: 1723415903}
+  - component: {fileID: 1723415904}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1421,19 +1424,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1723415898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1723415895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dcdbff0ace365248b5d4af82fe93555, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _wallet: {fileID: 905829209}
 --- !u!61 &1723415900
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1518,7 +1508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d200bddbe33fd9d4fb184ef6cc716157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movement: {fileID: 2029766753}
+  _mover: {fileID: 2029766753}
   _jump: {fileID: 356085780}
 --- !u!95 &1723415903
 Animator:
@@ -1541,6 +1531,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1723415904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723415895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5950521acadfb484ea1bbdd00fb41357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wallet: {fileID: 905829209}
 --- !u!1 &1751195455
 GameObject:
   m_ObjectHideFlags: 0
@@ -1833,7 +1836,7 @@ GameObject:
   - component: {fileID: 2029766754}
   - component: {fileID: 2029766753}
   m_Layer: 0
-  m_Name: Movement
+  m_Name: Mover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

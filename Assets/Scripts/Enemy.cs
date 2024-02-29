@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private List<Waypoint> _waypoints;
-    [SerializeField] private Movement _movement;
+    [SerializeField] private Mover _mover;
 
     private Vector2 _direction;
 
@@ -16,20 +16,15 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _movement.MoveTo(_direction);
+        _mover.MoveTo(_direction);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.TryGetComponent(out Waypoint waypoint))
         {
-            int index = _waypoints.IndexOf(waypoint);
-            int nextIndex = 0;
-
-            if (index + 1 < _waypoints.Count)
-            {
-                nextIndex = index + 1;
-            }
+            int currentIndex = _waypoints.IndexOf(waypoint);
+            int nextIndex = ++currentIndex % _waypoints.Count;
 
             ChangeCurrentWaypoint(_waypoints[nextIndex]);
         }

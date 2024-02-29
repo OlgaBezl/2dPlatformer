@@ -1,18 +1,25 @@
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class Jump : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private float _jumpHeight = 2;
     [SerializeField] private float _zeroDistanceToGround = 0.5f;
+    [SerializeField] private LayerMask _groundLayerMask;
 
     private const float JumpMultiply = -2f;
 
     private bool _isGrounded;
 
-    internal void UpdateGroundCollision()
+    private void Update()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, _zeroDistanceToGround, LayerMask.GetMask("Ground"));
+        UpdateGroundCollision();
+    }
+
+    private void UpdateGroundCollision()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, _zeroDistanceToGround, _groundLayerMask);
         _isGrounded = hit.collider != null;
     }
 
