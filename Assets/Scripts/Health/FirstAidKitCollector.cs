@@ -8,7 +8,7 @@ public class FirstAidKitCollector : MonoBehaviour
     {
         if (other.TryGetComponent(out FirstAidKit kit))
         {
-            _health.Heal(kit.HealValue);
+            _health.Heal(kit.Heal);
             kit.Destroy();
         }
     }

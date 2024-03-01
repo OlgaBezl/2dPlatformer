@@ -19,7 +19,12 @@ public class CoinSpawner : MonoBehaviour
         while (enabled)
         {
             CoinSpawnPoint spawnPoint = GetRandomPoin();
-            Instantiate(spawnPoint.CoinPrefab, spawnPoint.transform.position, Quaternion.identity, transform);
+
+            if(spawnPoint.CoinSpawned == false)
+            {
+                Instantiate(spawnPoint.CoinPrefab, spawnPoint.transform.position, Quaternion.identity, transform);
+                spawnPoint.SetCoinSpawned(true);
+            }
 
             yield return wait;
         }

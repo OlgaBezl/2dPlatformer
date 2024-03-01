@@ -1,3 +1,7 @@
-public class Coin : PickUpItem
+public class Coin : Item
 {
+    public void PickUp()
+    {
+
+    }
 }

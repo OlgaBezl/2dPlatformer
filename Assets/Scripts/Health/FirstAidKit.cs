@@ -1,8 +1,6 @@
 using UnityEngine;
 
-public class FirstAidKit : PickUpItem
+public class FirstAidKit : Item
 {
-    [SerializeField] private float _heal;
-
-    public float HealValue => _heal;
+    [field: SerializeField] public float Heal { get; private set; }
 }

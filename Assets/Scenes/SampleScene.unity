@@ -324,7 +324,7 @@ MonoBehaviour:
   - {fileID: 702505929}
   - {fileID: 1945385888}
   - {fileID: 2130074001}
-  _spawnDelay: 3
+  _spawnDelay: 1
 --- !u!1 &356085778
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,7 +476,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.37409514, g: 0.46479297, b: 0.6132076, a: 0}
+  m_BackGroundColor: {r: 0.29073218, g: 0.3582202, b: 0.46226418, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -761,7 +761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerMovement: {fileID: 1723415902}
   _animator: {fileID: 1723415903}
-  _attacker: {fileID: 2045528726}
+  _attacker: {fileID: 2045528728}
 --- !u!4 &999506997
 Transform:
   m_ObjectHideFlags: 0
@@ -1523,6 +1523,7 @@ GameObject:
   - component: {fileID: 1723415904}
   - component: {fileID: 1723415905}
   - component: {fileID: 1723415906}
+  - component: {fileID: 1723415907}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1747,7 +1748,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c66b3858e32c8469dcc000a4614585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 150
+  _maxHealth: 30
+--- !u!114 &1723415907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723415895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411ce28981d6464499dec3821780b6c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: {fileID: 1723415906}
+  _attacker: {fileID: 2045528728}
+  _jump: {fileID: 356085780}
+  _playerAnimator: {fileID: 999506995}
 --- !u!1 &1751195455
 GameObject:
   m_ObjectHideFlags: 0
@@ -2085,7 +2102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2045528725}
   - component: {fileID: 2045528727}
-  - component: {fileID: 2045528726}
+  - component: {fileID: 2045528728}
   m_Layer: 6
   m_Name: Attacker
   m_TagString: Untagged
@@ -2108,23 +2125,6 @@ Transform:
   m_Father: {fileID: 1723415896}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2045528726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2045528724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 383a19ed8a8f5cb46bfc2e2b7c71aa1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _targetLayerMask:
-    serializedVersion: 2
-    m_Bits: 128
-  _attackValue: 10
-  _cooldown: 3
 --- !u!61 &2045528727
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2170,6 +2170,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4, y: 3}
   m_EdgeRadius: 0
+--- !u!114 &2045528728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045528724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 049f5eda7b12e0040a726af4bbe6c3f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackValue: 10
+  _cooldown: 3
+  _targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!4 &2130074000 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1992648133832557693, guid: ba211d98bd59196488fb5d3cee13870c, type: 3}
