@@ -1,45 +1,70 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider2D))]
-public class EnemyMover : MonoBehaviour
+public class EnemyMover : CharacterMover
 {
     [SerializeField] private List<Waypoint> _waypoints;
-    [SerializeField] private Mover _mover;
     [SerializeField] private Watcher _watcher;
-
-    private Vector2 _direction;
+    [SerializeField] private float _zeroDistanceToTarget = 0.3f;
+    
+    private Waypoint _currentWaypoint;
 
     private void Start()
     {
-        ChangeCurrentWaypoint(_waypoints[0]);
+        SetCurrentWaypoint(_waypoints[0]);
+    }
+
+    private void Update()
+    {
+        if (IsActive == false)
+        {
+            return;
+        }
+
+        if (_watcher.IsWatchingTarget)
+        {
+            Direction = _watcher.TargetPosition.normalized;
+        }
+        else
+        {
+            if (CheckIfNearTarget(_currentWaypoint.transform.position))
+            {
+                SetCurrentWaypoint(GetNextWaypoint());
+            }
+            else
+            {
+                SetCurrentWaypoint(_currentWaypoint);
+            }
+        }
     }
 
     private void FixedUpdate()
     {
-        if (_watcher.IsWatchingTarget)
+        if (IsActive == false)
         {
-            _mover.MoveTo(_watcher.TargetPosition.normalized);
+            return;
         }
-        else
-        {
-            _mover.MoveTo(_direction);
-        }
+
+        Mover.MoveTo(Direction);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private Waypoint GetNextWaypoint()
     {
-        if (other.TryGetComponent(out Waypoint waypoint))
-        {
-            int currentIndex = _waypoints.IndexOf(waypoint);
-            int nextIndex = ++currentIndex % _waypoints.Count;
+        int currentIndex = _waypoints.IndexOf(_currentWaypoint);
+        int nextIndex = ++currentIndex % _waypoints.Count;
 
-            ChangeCurrentWaypoint(_waypoints[nextIndex]);
-        }
+        return _waypoints[nextIndex];
     }
 
-    private void ChangeCurrentWaypoint(Waypoint waypoint)
+    private void SetCurrentWaypoint(Waypoint waypoint)
     {
-        _direction = (waypoint.transform.position - transform.position).normalized;
+        _currentWaypoint = waypoint;
+        Direction = (waypoint.transform.position - transform.position).normalized;
+    }
+
+    private bool CheckIfNearTarget(Vector2 targetPosition)
+    {
+        float distance = Vector2.Distance(transform.position, targetPosition);
+        return distance <= _zeroDistanceToTarget;
     }
 }

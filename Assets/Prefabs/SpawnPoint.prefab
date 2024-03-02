@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1992648133832557693}
   - component: {fileID: 3739285336209631353}
-  - component: {fileID: 8882652275116989078}
+  - component: {fileID: 8268095024653073853}
   m_Layer: 0
-  m_Name: CoinSpawnPoint
+  m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3739285336209631353
 SpriteRenderer:
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8882652275116989078
+--- !u!114 &8268095024653073853
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,7 +94,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6596150118273559696}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 484634c483eedf344a118115bd70c0bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e5f1fc529fca7f40a575e4160893459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coinPrefab: {fileID: 463346610941579734, guid: 7e221abfb5b5d1f41800bdd525fad4d5, type: 3}
+  <ItemPrefab>k__BackingField: {fileID: 0}
+  _maxCoinsCount: 1

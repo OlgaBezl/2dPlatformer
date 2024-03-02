@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Attacker : MonoBehaviour
@@ -6,24 +8,35 @@ public class Attacker : MonoBehaviour
     [SerializeField] private float _attackValue = 10f;
     [SerializeField] private float _cooldown = 3f;
 
+    public event Action<bool> Attacking;
+
     private Coroutine _coroutine;
 
     public bool IsAttack {  get; private set; }
 
-    public void TryAttack(Health health)
+    protected void TryAttack(CharacterHealth health)
     {
-        Debug.Log("TryAttack");
-        if (IsAttack == false)
+        if (IsAttack)
         {
-            IsAttack = true;
-            _coroutine = StartCoroutine(Attack(health));
+            return;
         }
+
+        health.Died += StopAttack;
+
+        IsAttack = true;
+        Attacking?.Invoke(true);
+        _coroutine = StartCoroutine(Attack(health));
     }
 
-    public void StopAttack()
+    protected void StopAttack()
     {
-        Debug.Log("StopAttack");
+        if (IsAttack == false)
+        {
+            return;
+        }
+
         IsAttack = false;
+        Attacking?.Invoke(false);
 
         if (_coroutine != null)
         {
@@ -31,7 +44,7 @@ public class Attacker : MonoBehaviour
         }
     }
 
-    private IEnumerator Attack(Health health)
+    private IEnumerator Attack(CharacterHealth health)
     {
         var wait = new WaitForSeconds(_cooldown);
 

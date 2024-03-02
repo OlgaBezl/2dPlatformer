@@ -1,15 +1,24 @@
+using System;
 using UnityEngine;
 
-public class Mover : MonoBehaviour
+public class Mover 
 {
-    [SerializeField] private Transform _rootTransform;
-    [SerializeField] private float _speed = 5;
+    public event Action<bool> Walking;
 
-    public Vector2 Direction { get; private set; }
+    private Transform _rootTransform;
+    private float _speed = 5;
+    private Vector2 _direction;
     
+    public Mover (Transform rootTransform, float speed)
+    {
+        _rootTransform = rootTransform;
+        _speed = speed;
+    }
+
     public void MoveTo(Vector2 direction)
     {
-        Direction = direction;
+        UpdateWalkEvent(direction);
+        _direction = direction;
 
         _rootTransform.Translate(_speed * Time.deltaTime * direction, Space.World);
 
@@ -17,6 +26,18 @@ public class Mover : MonoBehaviour
             direction.x > 0 && _rootTransform.localScale.x < 0)
         {
             Flip();
+        }
+    }
+
+    private void UpdateWalkEvent(Vector2 direction)
+    {
+        if (_direction == Vector2.zero && direction != Vector2.zero)
+        {
+            Walking?.Invoke(true);
+        }
+        else if (direction == Vector2.zero && _direction != Vector2.zero)
+        {
+            Walking?.Invoke(false);
         }
     }
 

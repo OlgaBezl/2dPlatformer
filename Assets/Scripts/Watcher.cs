@@ -5,7 +5,7 @@ public class Watcher : MonoBehaviour
     [SerializeField] private float _distanceView = 10f;
     [SerializeField] private LayerMask _targetLayerMask;
     [SerializeField] private Transform _transform;
-    [SerializeField] private Mover _mover;
+    [SerializeField] private CharacterMover _mover;
 
     public bool IsWatchingTarget { get; private set; }
     public Vector2 TargetPosition { get; private set; }

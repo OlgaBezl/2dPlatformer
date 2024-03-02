@@ -34,7 +34,7 @@ Transform:
   - {fileID: 8707995705998762285}
   - {fileID: 8854773447416006915}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6226909309751957275
 MonoBehaviour:
@@ -82,7 +82,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.75
 --- !u!95 &4015853421298439899
 Animator:
   serializedVersion: 5

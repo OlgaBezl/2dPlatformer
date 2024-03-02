@@ -1,24 +1,25 @@
+
 using System;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class Health
 {
-    [SerializeField] private float _maxHealth;
+    public float MaxHealth { get; private set; }
+    public float CurrentHealth { get; private set; }
 
     public event Action Died;
 
-    public float CurrentHealth { get; private set; }
-
-    private void Start()
+    public Health(float maxHealth)
     {
-        CurrentHealth = _maxHealth;
+        MaxHealth = maxHealth;
+        CurrentHealth = maxHealth;
     }
 
     public void Heal(float value)
     {
-        if(value > 0)
+        if (value > 0)
         {
-            CurrentHealth = Mathf.Clamp(CurrentHealth + value, 0, _maxHealth);
+            CurrentHealth = Mathf.Clamp(CurrentHealth + value, 0, MaxHealth);
         }
     }
 
@@ -26,7 +27,7 @@ public class Health : MonoBehaviour
     {
         if (CurrentHealth > 0)
         {
-            CurrentHealth = Mathf.Clamp(CurrentHealth - damage, 0, _maxHealth);
+            CurrentHealth = Mathf.Clamp(CurrentHealth - damage, 0, MaxHealth);
 
             if (CurrentHealth <= 0)
             {

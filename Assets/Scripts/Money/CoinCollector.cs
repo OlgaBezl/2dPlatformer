@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent (typeof(Collider2D))]
 public class CoinCollector : MonoBehaviour
 {
     [SerializeField] private Wallet _wallet;
@@ -9,7 +10,7 @@ public class CoinCollector : MonoBehaviour
         if (other.TryGetComponent(out Coin coin))
         {
             _wallet.AddCoin();
-            coin.Destroy();
+            coin.PickUp();
         }
     }
 }
