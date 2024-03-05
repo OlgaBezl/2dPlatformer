@@ -5,7 +5,7 @@ public class CharacterMover : MonoBehaviour
 {
     [SerializeField] private Transform _rootTransform;
     [SerializeField] private float _speed = 5;
-    [SerializeField] private CharacterHealth _health;
+    [SerializeField] private Health _health;
 
     public event Action<bool> Walking;
 

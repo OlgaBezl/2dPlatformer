@@ -2,17 +2,19 @@
 using System;
 using UnityEngine;
 
-public class Health
+public class Health: MonoBehaviour
 {
-    public float MaxHealth { get; private set; }
-    public float CurrentHealth { get; private set; }
+    [field: SerializeField] public float MaxHealth { get; private set; }
 
     public event Action Died;
+    public event Action<float> Changed;
 
-    public Health(float maxHealth)
+    public float CurrentHealth { get; private set; }
+    public bool IsAlive { get => CurrentHealth > 0; }
+
+    private void Awake()
     {
-        MaxHealth = maxHealth;
-        CurrentHealth = maxHealth;
+        CurrentHealth = MaxHealth;
     }
 
     public void Heal(float value)
@@ -20,6 +22,7 @@ public class Health
         if (value > 0)
         {
             CurrentHealth = Mathf.Clamp(CurrentHealth + value, 0, MaxHealth);
+            Changed?.Invoke(CurrentHealth);
         }
     }
 
@@ -28,6 +31,7 @@ public class Health
         if (CurrentHealth > 0)
         {
             CurrentHealth = Mathf.Clamp(CurrentHealth - damage, 0, MaxHealth);
+            Changed?.Invoke(CurrentHealth);
 
             if (CurrentHealth <= 0)
             {

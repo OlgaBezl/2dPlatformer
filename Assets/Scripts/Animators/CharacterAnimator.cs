@@ -4,7 +4,7 @@ public class CharacterAnimator : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
     [SerializeField] private Attacker _attacker;
-    [SerializeField] private CharacterHealth _health;
+    [SerializeField] private Health _health;
     [SerializeField] private CharacterMover _mover;
 
     public readonly int IsWalk = Animator.StringToHash(nameof(IsWalk));

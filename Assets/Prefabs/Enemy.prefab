@@ -284,10 +284,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1515253292826608216}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4c66b3858e32c8469dcc000a4614585, type: 3}
+  m_Script: {fileID: 11500000, guid: b288974a8a1ba9840a90728da52165db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 20
+  <MaxHealth>k__BackingField: 30
 --- !u!1 &2882580482634435417
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,7 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 049f5eda7b12e0040a726af4bbe6c3f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackValue: 7
+  _attackValue: 10
   _cooldown: 3
   _targetLayerMask:
     serializedVersion: 2

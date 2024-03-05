@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Attacker : MonoBehaviour
@@ -14,7 +13,7 @@ public class Attacker : MonoBehaviour
 
     public bool IsAttack {  get; private set; }
 
-    protected void TryAttack(CharacterHealth health)
+    protected void TryAttack(Health health)
     {
         if (IsAttack)
         {
@@ -44,7 +43,7 @@ public class Attacker : MonoBehaviour
         }
     }
 
-    private IEnumerator Attack(CharacterHealth health)
+    private IEnumerator Attack(Health health)
     {
         var wait = new WaitForSeconds(_cooldown);
 

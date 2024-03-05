@@ -4,7 +4,7 @@ using UnityEngine;
 public class CharacterAttacker : Attacker
 {
     [SerializeField] private LayerMask _targetLayerMask;
-    [SerializeField] private CharacterHealth _health;
+    [SerializeField] private Health _health;
 
     private void OnEnable()
     {
@@ -21,7 +21,7 @@ public class CharacterAttacker : Attacker
     {
         if (CheckIfCollisionInTargetLayer(collision))
         {
-            if (collision.TryGetComponent(out CharacterHealth health))
+            if (collision.TryGetComponent(out Health health))
             {
                 if(health.IsAlive)
                 {
@@ -35,7 +35,7 @@ public class CharacterAttacker : Attacker
     {
         if (CheckIfCollisionInTargetLayer(collision))
         {
-            if (collision.TryGetComponent(out CharacterHealth _))
+            if (collision.TryGetComponent(out Health _))
             {
                 StopAttack();
             }
