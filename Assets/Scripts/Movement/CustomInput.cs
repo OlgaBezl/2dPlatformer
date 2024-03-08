@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MovementInput
+public class CustomInput
 {
     private const string HorizontalAxis = "Horizontal";
     private const string VerticalAxis = "Vertical";
@@ -18,5 +18,10 @@ public class MovementInput
     public bool GetIntentJump()
     {
         return Input.GetKey(KeyCode.Space);
+    }
+
+    public bool GetIntentVampire()
+    {
+        return Input.GetKey(KeyCode.LeftControl);
     }
 }

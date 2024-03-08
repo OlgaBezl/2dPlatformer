@@ -23,7 +23,7 @@ public class EnemyMover : CharacterMover
 
         if (_watcher.IsWatchingTarget)
         {
-            Direction = _watcher.TargetPosition.normalized;
+            Direction = _watcher.TargetPosition;
         }
         else
         {
@@ -45,7 +45,7 @@ public class EnemyMover : CharacterMover
             return;
         }
 
-        Mover.MoveTo(Direction);
+        Mover.MoveTo(Direction.normalized);
     }
 
     private Waypoint GetNextWaypoint()

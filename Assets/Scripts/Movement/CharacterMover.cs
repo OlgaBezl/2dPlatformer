@@ -9,7 +9,7 @@ public class CharacterMover : MonoBehaviour
 
     public event Action<bool> Walking;
 
-    protected MovementInput Input;
+    protected CustomInput Input;
     protected Mover Mover;
     protected bool IsActive;
 
@@ -17,7 +17,7 @@ public class CharacterMover : MonoBehaviour
 
     private void Awake()
     {
-        Input = new MovementInput();
+        Input = new CustomInput();
         Mover = new Mover(_rootTransform, _speed);
         Mover.Walking += Walking;
         IsActive = true;

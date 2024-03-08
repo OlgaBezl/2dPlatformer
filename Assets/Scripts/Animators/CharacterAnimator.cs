@@ -3,7 +3,7 @@ using UnityEngine;
 public class CharacterAnimator : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
-    [SerializeField] private Attacker _attacker;
+    [SerializeField] private CharackerAttacker _attacker;
     [SerializeField] private Health _health;
     [SerializeField] private CharacterMover _mover;
 

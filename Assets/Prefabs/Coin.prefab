@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6226909309751957275}
   - component: {fileID: 3171872273842390544}
   - component: {fileID: 4015853421298439899}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8707995705998762285}
   - component: {fileID: 1154409895196660347}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Yellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8854773447416006915}
   - component: {fileID: 575203827112292262}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Black
   m_TagString: Untagged
   m_Icon: {fileID: 0}
